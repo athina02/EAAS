@@ -525,3 +525,105 @@ body {
   .brand { font-size: 1.4rem; }
   .recovery-ring-wrap { width: 110px; height: 110px; }
 }
+
+/* ================= WORKOUT CARD ================= */
+
+.workout-card{
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.workout-card:hover,
+.workout-card:active{
+  border-color: var(--neon);
+  box-shadow: 0 0 18px rgba(0,217,255,.18);
+}
+
+.workout-goal{
+  background: rgba(0,217,255,.12);
+  color: var(--neon);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+
+.workout-title{
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.workout-description{
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.workout-stats{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-top: 12px;
+  border-top: 1px solid var(--card-border);
+}
+
+.workout-stat{
+  background: rgba(255,255,255,.02);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  transition: border-color .25s ease, transform .2s ease;
+}
+
+.workout-stat:hover{
+  border-color: var(--neon);
+  transform: translateY(-2px);
+}
+
+.workout-stat-value{
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--neon);
+  text-shadow: 0 0 8px rgba(0,217,255,.35);
+}
+
+.workout-stat-label{
+  font-size: .7rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin-top: 4px;
+}
+
+.workout-btn{
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg,#00d9ff,#0077a3);
+  color: #06121b;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .25s ease;
+  box-shadow: 0 0 16px rgba(0,217,255,.28);
+}
+
+.workout-btn:hover{
+  box-shadow: 0 0 24px rgba(0,217,255,.45);
+}
+
+.workout-btn:active{
+  transform: scale(.98);
+}
+
+.workout-empty{
+  text-align: center;
+  color: var(--text-dim);
+  padding: 20px 0;
+}
