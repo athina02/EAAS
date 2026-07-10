@@ -497,7 +497,7 @@ const demoAthleteData = {
   sleep: 7.5,
   energy: "High",
   soreness: "Light",
-  weight: 52.8
+  weight: 68
 };
 
 /**
