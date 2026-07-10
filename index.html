@@ -2,16 +2,112 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EAAS - ATHINA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>EAAS - ATHINA Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="splash">
-    <h1>ATHINA</h1>
-    <p>Elite Athlete AI System</p>
-  </div>
+  <!-- ===== TOP HEADER ===== -->
+  <header class="header">
+    <div class="header-top">
+      <h1 class="brand">ATHINA</h1>
+      <div class="status-dot"></div>
+    </div>
+    <p id="greeting" class="greeting">Good Morning, Athlete</p>
+    <p id="datetime" class="datetime">Loading...</p>
+  </header>
+
+  <!-- ===== MAIN SCROLL AREA ===== -->
+  <main class="main-content">
+
+    <!-- Recovery Card -->
+    <section class="card recovery-card">
+      <div class="card-header">
+        <span class="card-title">Recovery</span>
+        <span class="recovery-percent" id="recoveryPercent">82%</span>
+      </div>
+
+      <div class="recovery-ring-wrap">
+        <svg class="recovery-ring" viewBox="0 0 120 120">
+          <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+          <circle class="ring-fill" id="ringFill" cx="60" cy="60" r="52"></circle>
+        </svg>
+        <span class="ring-label">READY</span>
+      </div>
+
+      <div class="recovery-stats">
+        <div class="stat-item">
+          <span class="stat-value">7.5h</span>
+          <span class="stat-label">Sleep</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">High</span>
+          <span class="stat-label">Energy</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">68kg</span>
+          <span class="stat-label">Weight</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Today's Mission -->
+    <section class="card mission-card">
+      <div class="card-header">
+        <span class="card-title">Today's Mission</span>
+        <span class="mission-tag">Muay Thai</span>
+      </div>
+      <p class="mission-text">Focus on hip rotation for power kicks. 45 min technical session + 20 min conditioning.</p>
+    </section>
+
+    <!-- Start Workout Button -->
+    <button class="start-btn" id="startWorkoutBtn">
+      <span class="start-btn-text">START WORKOUT</span>
+      <span class="start-btn-glow"></span>
+    </button>
+
+    <!-- Quick Stats -->
+    <section class="quick-stats">
+      <div class="quick-stat-box">
+        <span class="quick-stat-value">146</span>
+        <span class="quick-stat-label">Total Workouts</span>
+      </div>
+      <div class="quick-stat-box">
+        <span class="quick-stat-value">12</span>
+        <span class="quick-stat-label">Day Streak</span>
+      </div>
+      <div class="quick-stat-box">
+        <span class="quick-stat-value">9</span>
+        <span class="quick-stat-label">Records</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== BOTTOM NAVIGATION ===== -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-nav="home">
+      <span class="nav-icon">⌂</span>
+      <span class="nav-label">Home</span>
+    </button>
+    <button class="nav-item" data-nav="workout">
+      <span class="nav-icon">⚡</span>
+      <span class="nav-label">Workout</span>
+    </button>
+    <button class="nav-item" data-nav="progress">
+      <span class="nav-icon">▲</span>
+      <span class="nav-label">Progress</span>
+    </button>
+    <button class="nav-item" data-nav="athina">
+      <span class="nav-icon">◉</span>
+      <span class="nav-label">ATHINA</span>
+    </button>
+    <button class="nav-item" data-nav="settings">
+      <span class="nav-icon">⚙</span>
+      <span class="nav-label">Settings</span>
+    </button>
+  </nav>
 
   <script src="script.js"></script>
 </body>
