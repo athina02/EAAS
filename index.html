@@ -9,12 +9,18 @@
 <body>
 
   <!-- ===== TOP HEADER ===== -->
-  <header class="header">
+  <header class="header fade-in">
     <div class="header-top">
       <h1 class="brand">ATHINA</h1>
       <div class="status-dot"></div>
     </div>
-    <p id="greeting" class="greeting">Good Morning, Athlete</p>
+
+    <div class="greeting-block">
+      <p id="greetingTime" class="greeting-time">Good Morning</p>
+      <p id="greetingSub" class="greeting-sub">Welcome Back</p>
+      <p class="mission-ready">Mission Ready.</p>
+    </div>
+
     <p id="datetime" class="datetime">Loading...</p>
   </header>
 
@@ -22,10 +28,10 @@
   <main class="main-content">
 
     <!-- Recovery Card -->
-    <section class="card recovery-card">
+    <section class="card recovery-card fade-in">
       <div class="card-header">
         <span class="card-title">Recovery</span>
-        <span class="recovery-percent" id="recoveryPercent">82%</span>
+        <span class="recovery-percent" id="recoveryPercent">--</span>
       </div>
 
       <div class="recovery-ring-wrap">
@@ -33,52 +39,52 @@
           <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
           <circle class="ring-fill" id="ringFill" cx="60" cy="60" r="52"></circle>
         </svg>
-        <span class="ring-label">READY</span>
+        <span class="ring-label" id="ringLabel">--</span>
       </div>
 
       <div class="recovery-stats">
         <div class="stat-item">
-          <span class="stat-value">7.5h</span>
+          <span class="stat-value" id="sleepValue">--</span>
           <span class="stat-label">Sleep</span>
         </div>
         <div class="stat-item">
-          <span class="stat-value">High</span>
+          <span class="stat-value" id="energyValue">--</span>
           <span class="stat-label">Energy</span>
         </div>
         <div class="stat-item">
-          <span class="stat-value">68kg</span>
+          <span class="stat-value" id="weightValue">--</span>
           <span class="stat-label">Weight</span>
         </div>
       </div>
     </section>
 
     <!-- Today's Mission -->
-    <section class="card mission-card">
+    <section class="card mission-card fade-in">
       <div class="card-header">
         <span class="card-title">Today's Mission</span>
-        <span class="mission-tag">Muay Thai</span>
+        <span class="mission-tag" id="missionTag">--</span>
       </div>
-      <p class="mission-text">Focus on hip rotation for power kicks. 45 min technical session + 20 min conditioning.</p>
+      <p class="mission-text" id="missionText">No mission set yet.</p>
     </section>
 
     <!-- Start Workout Button -->
-    <button class="start-btn" id="startWorkoutBtn">
+    <button class="start-btn fade-in" id="startWorkoutBtn">
       <span class="start-btn-text">START WORKOUT</span>
       <span class="start-btn-glow"></span>
     </button>
 
     <!-- Quick Stats -->
-    <section class="quick-stats">
+    <section class="quick-stats fade-in">
       <div class="quick-stat-box">
-        <span class="quick-stat-value">146</span>
+        <span class="quick-stat-value" id="totalWorkouts">--</span>
         <span class="quick-stat-label">Total Workouts</span>
       </div>
       <div class="quick-stat-box">
-        <span class="quick-stat-value">12</span>
+        <span class="quick-stat-value" id="currentStreak">--</span>
         <span class="quick-stat-label">Day Streak</span>
       </div>
       <div class="quick-stat-box">
-        <span class="quick-stat-value">9</span>
+        <span class="quick-stat-value" id="personalRecords">--</span>
         <span class="quick-stat-label">Records</span>
       </div>
     </section>
