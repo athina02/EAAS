@@ -278,6 +278,9 @@ function updateDashboard() {
   renderRecoveryCard();
   renderMissionCard();
   renderQuickStats();
+
+  generateWorkout();
+
 }
 
 /* ==========================================================
