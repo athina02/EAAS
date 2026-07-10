@@ -49,6 +49,89 @@
             <span class="form-error" id="errorSleep"></span>
           </div>
 
+<div class="form-group">
+
+  <label class="form-label" for="inputGoal">
+    Training Goal
+  </label>
+
+  <select
+    class="form-input form-select"
+    id="inputGoal"
+    name="goal"
+    autocomplete="off"
+  >
+
+    <option value="" selected disabled>
+      Select Your Goal
+    </option>
+
+    <optgroup label="Performance">
+
+      <option value="ENDURANCE">
+        🏃 Endurance
+      </option>
+
+      <option value="SPRINT">
+        ⚡ Sprint Performance
+      </option>
+
+      <option value="DISTANCE">
+        🏃‍♂️ Distance Running
+      </option>
+
+      <option value="JUMP">
+        🦘 Jump Performance
+      </option>
+
+    </optgroup>
+
+    <optgroup label="Strength">
+
+      <option value="STRENGTH">
+        💪 Strength
+      </option>
+
+      <option value="HYBRID">
+        ⚡ Hybrid Athlete
+      </option>
+
+      <option value="FITNESS">
+        🏋 General Fitness
+      </option>
+
+      <option value="LEAN">
+        🔥 Lean Physique
+      </option>
+
+    </optgroup>
+
+    <optgroup label="Sports">
+
+      <option value="COMBAT">
+        🥊 Combat Sports
+      </option>
+
+    </optgroup>
+
+    <optgroup label="Other">
+
+      <option value="CUSTOM">
+        🎯 Custom Goal
+      </option>
+
+    </optgroup>
+
+  </select>
+
+  <span
+    class="form-error"
+    id="errorGoal"
+    aria-live="polite">
+  </span>
+
+</div>
+
           <div class="form-group">
             <label class="form-label" for="inputEnergy">Energy</label>
             <select class="form-input form-select" id="inputEnergy">
