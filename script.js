@@ -576,4 +576,90 @@ function init() {
   setInterval(renderDateTime, 30000);
 }
 
+/* ==========================================================
+   WORKOUT ENGINE v1.0
+   ========================================================== */
+
+let todayWorkout = null;
+
+function generateWorkout() {
+
+  if (!athleteData.goal || athleteData.recovery === null) {
+    todayWorkout = {
+      goal: "--",
+      title: "No Workout Available",
+      description: "Complete today's check-in and select your training goal to receive today's workout.",
+      duration: "--",
+      difficulty: "--",
+      calories: "--"
+    };
+
+    renderWorkoutCard();
+    return;
+  }
+
+  const recovery = athleteData.recovery;
+
+  if (recovery >= 80) {
+
+    todayWorkout = {
+      goal: athleteData.goal,
+      title: "Performance Session",
+      description: "High intensity workout. Push your limits today.",
+      duration: "60 min",
+      difficulty: "Hard",
+      calories: "550"
+    };
+
+  } else if (recovery >= 60) {
+
+    todayWorkout = {
+      goal: athleteData.goal,
+      title: "Normal Training",
+      description: "Maintain good intensity and focus on technique.",
+      duration: "45 min",
+      difficulty: "Medium",
+      calories: "420"
+    };
+
+  } else if (recovery >= 40) {
+
+    todayWorkout = {
+      goal: athleteData.goal,
+      title: "Light Session",
+      description: "Reduce intensity and focus on recovery.",
+      duration: "30 min",
+      difficulty: "Easy",
+      calories: "250"
+    };
+
+  } else {
+
+    todayWorkout = {
+      goal: athleteData.goal,
+      title: "Recovery Day",
+      description: "Walking, stretching and mobility only.",
+      duration: "20 min",
+      difficulty: "Recovery",
+      calories: "120"
+    };
+
+  }
+
+  renderWorkoutCard();
+}
+
+function renderWorkoutCard() {
+
+  if (!todayWorkout) return;
+
+  setText("workoutGoal", todayWorkout.goal);
+  setText("workoutTitle", todayWorkout.title);
+  setText("workoutDescription", todayWorkout.description);
+  setText("workoutDuration", todayWorkout.duration);
+  setText("workoutDifficulty", todayWorkout.difficulty);
+  setText("workoutCalories", todayWorkout.calories);
+
+}
+
 document.addEventListener("DOMContentLoaded", init);
