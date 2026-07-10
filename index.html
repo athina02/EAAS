@@ -27,6 +27,60 @@
   <!-- ===== MAIN SCROLL AREA ===== -->
   <main class="main-content">
 
+    <!-- Daily Check-in Card (collapsible) -->
+    <section class="card checkin-card fade-in">
+      <button class="checkin-header" id="checkinToggle" type="button" aria-expanded="false">
+        <span class="card-title">Today's Check-in</span>
+        <span class="checkin-chevron" id="checkinChevron">▾</span>
+      </button>
+
+      <div class="checkin-body" id="checkinBody">
+        <div class="checkin-content">
+
+          <div class="form-group">
+            <label class="form-label" for="inputWeight">Weight (kg)</label>
+            <input class="form-input" type="number" id="inputWeight" placeholder="e.g. 68" step="0.1">
+            <span class="form-error" id="errorWeight"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inputSleep">Sleep (hours)</label>
+            <input class="form-input" type="number" id="inputSleep" placeholder="e.g. 7.5" step="0.1">
+            <span class="form-error" id="errorSleep"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inputEnergy">Energy</label>
+            <select class="form-input form-select" id="inputEnergy">
+              <option value="">Select...</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+            <span class="form-error" id="errorEnergy"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inputSoreness">Soreness</label>
+            <select class="form-input form-select" id="inputSoreness">
+              <option value="">Select...</option>
+              <option value="None">None</option>
+              <option value="Light">Light</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+            <span class="form-error" id="errorSoreness"></span>
+          </div>
+
+          <button class="checkin-save-btn" id="saveCheckinBtn" type="button">
+            Save Check-in
+          </button>
+
+          <p class="checkin-success" id="checkinSuccess">✓ Check-in Saved</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Recovery Card -->
     <section class="card recovery-card fade-in">
       <div class="card-header">
