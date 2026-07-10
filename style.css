@@ -1,30 +1,314 @@
+/* ==========================================================
+   EAAS / ATHINA DASHBOARD — Black + Neon Blue Theme
+   ========================================================== */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --bg: #060a10;
+  --card-bg: #0e141d;
+  --card-border: #1b2735;
+  --neon: #00d9ff;
+  --neon-dim: #0099b3;
+  --text-main: #f0f4f8;
+  --text-dim: #7d8b9a;
+  --danger: #ff3b5c;
+  --success: #17e08a;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text-main);
+  font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+  overflow-x: hidden;
 }
 
 body {
-  background-color: #0d0d0d;
-  color: #ffffff;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 70px; /* space for bottom nav */
+}
+
+/* ================= HEADER ================= */
+.header {
+  padding: 28px 20px 20px;
+  background: linear-gradient(180deg, #0a1420 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-size: 1.6rem;
+  letter-spacing: 5px;
+  font-weight: 700;
+  color: var(--neon);
+  text-shadow: 0 0 14px rgba(0, 217, 255, 0.55);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 8px var(--success);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.greeting {
+  margin-top: 14px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.datetime {
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+}
+
+/* ================= MAIN CONTENT ================= */
+.main-content {
+  flex: 1;
+  padding: 18px 16px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.card-title {
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+/* ================= RECOVERY CARD ================= */
+.recovery-percent {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--neon);
+}
+
+.recovery-ring-wrap {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  margin: 6px auto 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
 }
 
-.splash h1 {
-  font-size: 3rem;
-  letter-spacing: 4px;
-  color: #ff2e2e;
-  text-shadow: 0 0 15px rgba(255, 46, 46, 0.6);
+.recovery-ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
 }
 
-.splash p {
-  margin-top: 10px;
+.ring-bg {
+  fill: none;
+  stroke: #1b2735;
+  stroke-width: 8;
+}
+
+.ring-fill {
+  fill: none;
+  stroke: var(--neon);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 327; /* circumference of r=52 */
+  stroke-dashoffset: 60; /* controlled by JS based on % */
+  filter: drop-shadow(0 0 6px rgba(0, 217, 255, 0.7));
+  transition: stroke-dashoffset 1s ease;
+}
+
+.ring-label {
+  position: absolute;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: var(--neon);
+  font-weight: 700;
+}
+
+.recovery-stats {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--card-border);
+  padding-top: 14px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.stat-label {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ================= MISSION CARD ================= */
+.mission-tag {
+  background: rgba(0, 217, 255, 0.12);
+  color: var(--neon);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+.mission-text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #cdd6e0;
+}
+
+/* ================= START WORKOUT BUTTON ================= */
+.start-btn {
+  position: relative;
+  width: 100%;
+  padding: 18px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #00d9ff, #0077a3);
+  color: #04121a;
   font-size: 1rem;
-  color: #aaaaaa;
-  letter-spacing: 1px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 0 22px rgba(0, 217, 255, 0.35);
+  transition: transform 0.15s ease;
+}
+
+.start-btn:active {
+  transform: scale(0.97);
+}
+
+.start-btn-text {
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= QUICK STATS ================= */
+.quick-stats {
+  display: flex;
+  gap: 12px;
+}
+
+.quick-stat-box {
+  flex: 1;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 14px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.quick-stat-value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--neon);
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.4);
+}
+
+.quick-stat-label {
+  font-size: 0.62rem;
+  color: var(--text-dim);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* ================= BOTTOM NAVIGATION ================= */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 68px;
+  background: #0a0f16;
+  border-top: 1px solid var(--card-border);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 100;
+}
+
+.nav-item {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: var(--text-dim);
+  font-size: 0.6rem;
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.nav-item.active {
+  color: var(--neon);
+  text-shadow: 0 0 8px rgba(0, 217, 255, 0.6);
+}
+
+/* ================= RESPONSIVE TWEAKS ================= */
+@media (max-width: 360px) {
+  .brand { font-size: 1.4rem; }
+  .recovery-ring-wrap { width: 110px; height: 110px; }
 }
