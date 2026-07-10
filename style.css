@@ -19,6 +19,7 @@
   --text-dim: #7d8b9a;
   --danger: #ff3b5c;
   --success: #17e08a;
+  --ring-color: var(--neon); /* future: swapped per recovery status */
 }
 
 html, body {
@@ -43,8 +44,8 @@ body {
   animation: fadeInUp 0.6s ease forwards;
 }
 
-/* stagger each block slightly for a smoother entrance */
 .header.fade-in { animation-delay: 0s; }
+.checkin-card.fade-in { animation-delay: 0.05s; }
 .recovery-card.fade-in { animation-delay: 0.1s; }
 .mission-card.fade-in { animation-delay: 0.2s; }
 .start-btn.fade-in { animation-delay: 0.3s; }
@@ -133,11 +134,7 @@ body {
   gap: 16px;
 }
 
-/* ================= REUSABLE CARD COMPONENT =================
-   Any future card only needs: <section class="card fade-in"> ... </section>
-   It automatically gets: background, border, radius, padding,
-   top glow border, and hover glow effect.
-   =============================================================== */
+/* ================= REUSABLE CARD COMPONENT ================= */
 .card {
   position: relative;
   background: var(--card-bg);
@@ -148,7 +145,6 @@ body {
   transition: box-shadow 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
 }
 
-/* animated glowing top border on every card */
 .card::before {
   content: "";
   position: absolute;
@@ -165,7 +161,6 @@ body {
   100% { left: 100%; }
 }
 
-/* hover / active glow effect */
 .card:hover,
 .card:active {
   border-color: var(--neon-dim);
@@ -185,6 +180,140 @@ body {
   text-transform: uppercase;
   color: var(--text-dim);
   font-weight: 600;
+}
+
+/* ================= CHECK-IN CARD ================= */
+.checkin-card {
+  padding: 0;
+}
+
+.checkin-header {
+  width: 100%;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px;
+  cursor: pointer;
+  color: var(--text-main);
+}
+
+.checkin-chevron {
+  color: var(--neon);
+  font-size: 0.9rem;
+  transition: transform 0.35s ease;
+}
+
+.checkin-card.open .checkin-chevron {
+  transform: rotate(180deg);
+}
+
+.checkin-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.checkin-card.open .checkin-body {
+  max-height: 600px; /* large enough for full form */
+}
+
+.checkin-content {
+  padding: 0 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.form-input {
+  background: #0a1018;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: var(--neon);
+  box-shadow: 0 0 10px rgba(0, 217, 255, 0.25);
+}
+
+.form-input.input-error {
+  border-color: var(--danger);
+}
+
+.form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--neon) 50%),
+                     linear-gradient(135deg, var(--neon) 50%, transparent 50%);
+  background-position: calc(100% - 18px) center, calc(100% - 13px) center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.form-error {
+  font-size: 0.7rem;
+  color: var(--danger);
+  min-height: 14px;
+}
+
+.checkin-save-btn {
+  margin-top: 4px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #00d9ff, #0077a3);
+  color: #04121a;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 16px rgba(0, 217, 255, 0.3);
+}
+
+.checkin-save-btn:hover {
+  box-shadow: 0 0 24px rgba(0, 217, 255, 0.45);
+}
+
+.checkin-save-btn:active {
+  transform: scale(0.97);
+}
+
+.checkin-success {
+  text-align: center;
+  color: var(--success);
+  font-size: 0.85rem;
+  font-weight: 700;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease;
+}
+
+.checkin-success.visible {
+  opacity: 1;
+  height: auto;
+  padding-top: 2px;
 }
 
 /* ================= RECOVERY CARD ================= */
@@ -218,13 +347,13 @@ body {
 
 .ring-fill {
   fill: none;
-  stroke: var(--neon);
+  stroke: var(--ring-color);
   stroke-width: 8;
   stroke-linecap: round;
-  stroke-dasharray: 327; /* circumference of r=52 */
-  stroke-dashoffset: 327; /* full offset = empty ring until JS sets real value */
+  stroke-dasharray: 327;
+  stroke-dashoffset: 327;
   filter: drop-shadow(0 0 6px rgba(0, 217, 255, 0.7));
-  transition: stroke-dashoffset 1s ease;
+  transition: stroke-dashoffset 1s ease, stroke 0.5s ease;
 }
 
 .ring-label {
