@@ -1,0 +1,11 @@
+{
+  "name": "EAAS - Elite Athlete AI System",
+  "short_name": "EAAS",
+  "description": "Elite Athlete AI System powered by ATHINA",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0d0d0d",
+  "theme_color": "#0d0d0d",
+  "orientation": "portrait",
+  "icons": []
+}
